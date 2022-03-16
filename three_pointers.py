@@ -5,6 +5,7 @@ class Solution:
     # @param C : tuple of integers
     # @return an integer
     def minimize(self, A, B, C):
+        '''Takes in a number n, returns the square of n'''
         lnA = len(A)
         lnB = len(B)
         lnC = len(C)

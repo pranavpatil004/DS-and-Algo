@@ -1,11 +1,9 @@
-import sentiment_analysis as s
+import pyautogui as pg
+import time
 
-example_sentense = "The movie is okay" 
+time.sleep(4)
 
-sentiment = s.analyze_sentence(example_sentense)
-
-#print the sentiment
-print(sentiment)
-
-# print the sentiment score
-print(sentiment.score)
+for i in range(20):
+    pg.write('Hello World!')
+    pg.press('enter')
+    time.sleep(1)
