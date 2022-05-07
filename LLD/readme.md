@@ -1,3 +1,5 @@
+LLD Cheatsheet:
+
 Creational Patterns:
     1. Factory
         -- usefull when we want to "externalize object creation."
