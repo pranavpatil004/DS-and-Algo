@@ -15,3 +15,9 @@ Creational Patterns:
         -- It has an abstract builder and its implementations. It has a director class which actually calls the builder classes and get the objects built in a specific order. You use the director in your code to get the object created. If an object has different sequences, then you can have different directors.
         -- eg. JIRA utility class
         -- eg. Computer class: create a builder which will take the inputs from user and create the object in a desired order and then return the object.
+    4. Prototype:
+        -- create a single class(prototype) and implement similar other classes as runtime inheritance.The prototype class implements a clone method which is called whenever we want to create a new object. After the object is created/cloned, we change the values of the new object.
+        -- Deep copy should be used whenever we have objects within objects and we want to ensure that the embedded objects are also cloned.
+        -- Shallow copy can be used when we have only the basic datatypes.
+        -- Prototype manager can be used for prototype creation.
+        -- Implementation: TODO
