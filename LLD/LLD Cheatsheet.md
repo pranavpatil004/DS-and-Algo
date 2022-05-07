@@ -10,5 +10,6 @@ Creational Patterns:
     3. Builder
         -- useful when the object needs multiple parameters for its creation.
         -- also useful when we want to force a specific order while creating the object.
+        -- It has an abstract builder and its implementations. It has a director class which actually calls the builder classes and get the objects built in a specific order. You use the director in your code to get the object created. If an object has different sequences, then you can have different directors.
         -- eg. JIRA utility class
         -- eg. Computer class: create a builder which will take the inputs from user and create the object in a desired order and then return the object.
