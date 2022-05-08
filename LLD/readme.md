@@ -1,7 +1,7 @@
 #LLD Cheatsheet:
 
 ##Creational Patterns:
-Markup: 1. Factory
+Markup : 1. Factory
             -- usefull when we want to "externalize object creation."
             -- create a factory class which contains a method which returns the given object.
             -- eg. Cars: ford-fusion, chevy-volt, jeep-sahara. Create a factory which will return objects of these classes based on the enum or name provided.
@@ -23,7 +23,7 @@ Markup: 1. Factory
             -- Implementation: TODO
 
 ##Structural Patterns:
-Markup: 1. Adapter:
+Markup : 1. Adapter:
             -- two types: Object adapters: Composition, Class adapters: Inheritance
             i. Client: Class or object who is using the services.
             ii. Adaptee: The new API or class whose interface is not compatible with existing code.
