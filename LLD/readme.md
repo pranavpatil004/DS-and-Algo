@@ -21,3 +21,11 @@ Creational Patterns:
         -- Shallow copy can be used when we have only the basic datatypes.
         -- Prototype manager can be used for prototype creation.
         -- Implementation: TODO
+
+Structural Patterns:
+    1. Adapter:
+        -- two types: Object adapters: Composition, Class adapters: Inheritance
+        i. Client: Class or object who is using the services.
+        ii. Adaptee: The new API or class whose interface is not compatible with existing code.
+        iii. Adapter: Class which makes Adaptee's interface compatible with the existing code so that the client can use it.
+        iv. Target: Domain-specific interface used currently by the client.
