@@ -22,7 +22,7 @@
                 -- Prototype manager can be used for prototype creation.
                 -- Implementation: TODO
 
-    ##Structural Patterns:
+##Structural Patterns:
     Markup: 1. Adapter:
                 -- two types: Object adapters: Composition, Class adapters: Inheritance
                 i. Client: Class or object who is using the services.
