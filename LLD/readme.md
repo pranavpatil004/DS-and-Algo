@@ -1,6 +1,6 @@
-#LLD Cheatsheet:
+# LLD Cheatsheet: #
 
-##Creational Patterns:
+## Creational Patterns: ##
 
 Markup :    1. Factory
                 -- usefull when we want to "externalize object creation."
@@ -23,7 +23,7 @@ Markup :    1. Factory
                 -- Prototype manager can be used for prototype creation.
                 -- Implementation: TODO
 
-##Structural Patterns:
+## Structural Patterns: ##
 Markup :    1. Adapter:
                 -- two types: Object adapters: Composition, Class adapters: Inheritance
                 i. Client: Class or object who is using the services.
