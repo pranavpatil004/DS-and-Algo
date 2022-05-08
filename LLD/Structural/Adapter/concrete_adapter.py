@@ -1,4 +1,4 @@
-from abstract_adaptor import AbstractAdapter
+from abstract_adapter import AbstractAdapter
 
 class ConcreteAdapter(AbstractAdapter):
     def request(self, json_data):
