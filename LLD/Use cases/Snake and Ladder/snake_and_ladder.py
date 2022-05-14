@@ -86,6 +86,8 @@ class Player:
 
     def __repr__(self) -> str:
         return str(self.__player_position)
+
+#TODO: Implement player position helper
 class Game:
     def __init__(self) -> None:
         self.board = BoardFactory().get_board(10, 5, 15)
