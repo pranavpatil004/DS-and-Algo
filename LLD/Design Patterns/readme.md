@@ -30,3 +30,11 @@ Markup :1. Adapter:
             ii. Adaptee: The new API or class whose interface is not compatible with existing code.
             iii. Adapter: Class which makes Adaptee's interface compatible with the existing code so that the client can use it.
             iv. Target: Domain-specific interface used currently by the client.
+        2. Decorator:
+            -- also called as wrapper pattern.
+            -- used when we want to add additional functionality without changing the base class.
+            -- gives additional responsibility to the class at runtime instead of at compile time.
+            -- used when we want to deal with exploding subclasses.
+            -- prototype patterns can also be used for the same purpose.
+            -- eg. when we have an economy car base class and now want to create different car models based on top of economy like V6, carrera etc.
+
