@@ -1,0 +1,50 @@
+Requirements:
+    Users:
+        Register and Login
+        search train
+        view available seats
+        book seats
+        Get email and sms notification about the ticket
+        cancel ticket
+    Admins:
+        Register and Login
+        Add a train
+        Add a schedule
+        Edit a schedule
+    
+    A train can have different routes. Different source and destinations. Different stops in between.
+
+Database:
+    User:
+        user_id,
+        name,
+        email, phone
+    
+    Train:
+        train_id,
+        train_name,
+        train_type ...
+    
+    Coaches:
+        coach_id,
+        coach_type ...
+    
+    Seats:
+        seat_id,
+        seat_type,
+        seat_loc
+    
+    Train_schedule:
+        train_schedule_id,
+        train_id,
+        train_datetime
+    
+    Train_stops:
+        stop_id,
+        stop_name,
+        stop_loc
+    
+    Train_Route_Schedule:
+        train_schedule_id,
+        
+

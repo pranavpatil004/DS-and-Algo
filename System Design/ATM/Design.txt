@@ -1,0 +1,10 @@
+Requirements:
+    ATM can read cards - debit cards, credit cards
+    People can check their balance
+    People can withdraw money
+    People can select their account - savings, current.
+    Notification should be sent upon money withdrawal
+    Change pin.
+    The money should be divided into 2000, 500, 100 Rs bills
+    Users can deposit cash
+    

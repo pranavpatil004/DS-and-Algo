@@ -1,0 +1,71 @@
+Requirements:
+    Users:
+        Search a movie by name, city => theater, time
+        Select the seats
+        Book the seats
+        Cancel the ticket
+        Notification
+        User can see their past orders
+        User registration ==> standard
+
+    Admin:
+        Add/Update a movie
+        Add/Update a theater
+        Add/Update a movie schedule
+
+    Theater_Personnel:
+        Add/Update a movie
+        Add/Update a movie schedule
+    
+Database schema:
+    User:
+        user_id,
+        name, email, phone etc...
+    
+    Payement_id_crossref:
+        user_id,
+        payement_id
+    ===================================
+    Movie:
+        movie_id,
+        movie_name
+    
+    Movie_details: store in no-sql Database
+
+    Theater:
+        theater_id,
+        theater_name,
+        theater_city
+    
+    Screen:
+        screen_id,
+        theater_id
+    
+    Seats:
+        seat_id,
+        screen_id,
+        seat_type,
+        seat_loc
+    
+    Movie_schedule:
+        movie_schedule_id,
+        movie_id,
+        theater_id
+        screen_id,
+        date_time
+    ====================================
+    Order:
+        movie_schedule_id,
+        user_id,
+        seat_id,
+        is_booked
+    ====================================
+
+
+UserService == user_registration
+LoginService == login, is_user_logged_in, get_fine_grain_auth
+MovieService == search, add_movie, add_schedule, update..
+TheaterService == add_theater, update_theater, add_screen..
+OrderService == book_ticket
+PaymentService == complete_payment
+PastDetailsService == fetch_past_orders = by userid, by movie, by theater
