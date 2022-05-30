@@ -12,6 +12,9 @@ class ParkingSpot(abc.ABC):
     @property
     def spot_id(self):
         return self.__spot_id
+    
+    def get_type(self):
+        return type(self)
 
 class HandicapSpot(ParkingSpot):
     def __init__(self, spot_id):
@@ -72,18 +75,38 @@ class Terminal(abc.ABC):
 class EntryTerminal(Terminal):
     def __init__(self, id) -> None:
         super().__init__(id)
-        self.parking_ticket_builder = ParkingTicketFactory()
+        self.parking_spot_strategy = ParkingTicketAssignmentStrategy()
     
-    def get_ticket(self, parkingTicketType):
-        pass
+    def get_ticket(self, spot_type):
+        return self.parking_spot_strategy.get_parking_spot(spot_type, self)
+
+class TarrifCalculator:
+    def __init__(self, hourly_rate) -> None:
+        self.__hourly_rate = hourly_rate
+    def calculate(self, ticket: ParkingTicket):
+        # calculate difference between current time and issue time
+        current_time = 1
+        tarrif = (current_time - ticket.issue_time)*self.__hourly_rate
+        return tarrif
 
 class ExitTerminal(Terminal):
-    def __init__(self, id) -> None:
+    def __init__(self, id, tarrif_calculator: TarrifCalculator) -> None:
         super().__init__(id)
+        self.__tarrif_calculator = tarrif_calculator
+        self.__parking_lot = ParkingLot()
     
-    def accept_ticket(self, parking_ticket: ParkingTicket):
-        # remove the spot from reserved array and add it in available
-        pass
+    def accept_ticket(self, parking_ticket: ParkingTicket, paymentType):
+        amount = self.__tarrif_calculator.calculate(parking_ticket)
+        payment_switcher = {
+            "Cash": CashProcessor(),
+            "CreditCard": CreditCardProcessor()
+        }
+        payment_processor = payment_switcher.get(paymentType)
+        payment_processor.process(amount)
+        spot = parking_ticket.spot
+        self.__parking_lot.reserved_spots.discard(spot)
+        self.__parking_lot.add_parking_spot(spot)
+        return
 
 class ParkingSpotFactory:
     def __init__(self) -> None:
@@ -96,13 +119,6 @@ class ParkingSpotFactory:
         self.current_id += 1
         return self.spot_dic[parking_spot_type](self.current_id)
 
-class ParkingAssignmentStrategy:
-    def __init__(self) -> None:
-        self.parking_spot_factory = ParkingSpotFactory()
-
-    def get_parking_spot(self, parking_spot_type, terminal: Terminal):
-        # algorithm to get nearest parking spot based on min heaps
-        return self.parking_spot_factory.get_parking_spot(parking_spot_type)
 
 class ParkingTicketFactory:
     def __init__(self):
@@ -134,7 +150,55 @@ class ParkingLot:
             ParkingLot._instance[cls] = instance
         return ParkingLot._instance[cls]
     
-    def __init__(self) -> None:
-        pass
+    def __init__(self, entry_terminals, exit_terminals) -> None:
+        self.__entrances = [EntryTerminal() for _ in range(entry_terminals)]
+        self.__exits = [ExitTerminal() for _ in range(exit_terminals)]
+        self.__handicap_spots = {}
+        self.__compact_spots = {}
+        self.__reserved_spots = set()
+    
+    @property
+    def entrances(self):
+        return self.__entrances
+    
+    @property
+    def exits(self):
+        return self.__exits
 
-ParkingLot()
+    @property
+    def handicap_spots(self):
+        return self.__handicap_spots
+
+    @property
+    def reserved_spots(self):
+        return self.__reserved_spots
+
+    @property
+    def compact_spots(self):
+        return self.__compact_spots
+
+    def add_parking_spot(self, spot: ParkingSpot):
+        switcher = {
+            HandicapSpot: self.__handicap_spots.put(spot.get_number(), spot),
+            CompactSpot: self.__compact_spots.put(spot.get_number(), spot)
+        }
+        switcher.get(spot.get_type(), 'Wrong parking spot type')
+    
+    def get_ticket(entry_terminal: EntryTerminal, spot_type):
+        return entry_terminal.get_ticket(spot_type)
+
+ 
+class ParkingTicketAssignmentStrategy:
+    def __init__(self) -> None:
+        self.__parking_lot = ParkingLot()
+
+    def get_parking_spot(self, parking_spot_type, terminal: Terminal):
+        switcher = {
+            "HandicapSpot": self.__parking_lot.handicap_spots,
+            "CompactSpot": self.__parking_lot.compact_spots
+        }
+        spots = switcher.get(parking_spot_type, "Wrong parking spot type")
+        if len(spots) == 0:
+            return "Parking spots full"
+        # find the closest one
+        return spots.pop()
