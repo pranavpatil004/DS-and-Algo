@@ -56,19 +56,34 @@ Requirements:
 import abc
 
 
+class Bank(abc.ABC):
+    @abc.abstractmethod
+    def pin_verification_api(self, account_number, pin):
+        pass
+
+class BankA(Bank):
+    def __init__(self, accounts_info) -> None:
+        self.__accounts_info = accounts_info
+    
+    def pin_verification_api(self, account_number, pin):
+        if pin != self.__accounts_info[account_number].pin:
+            raise Exception("Invalid pin")
+        return True
+
 class Card:
-    def __init__(self, card_number, card_holder_name, account_number, cvv, card_type) -> None:
+    def __init__(self, card_number, card_holder_name, account_number, cvv, card_type, bank: Bank) -> None:
         self.card_number = card_number
         self.card_holder_name = card_holder_name
         self.account_number = account_number
         self.cvv = cvv
         self.card_type = card_type
+        self.bank = Bank
 
 
 class CardReader:
     @staticmethod
     def read_card(card: Card):
-        return card.account_number, card.card_holder_name
+        return card.account_number, card.card_holder_name, card.bank
 
 class Display:
     @staticmethod
@@ -77,15 +92,9 @@ class Display:
 
 class Verification(abc.ABC):
     @abc.abstractmethod
-    def verify(account_number, pin):
+    def verify(account_number, pin, bank):
         pass
 
-class Bank:
-    def __init__(self, accounts_info) -> None:
-        self.__accounts_info = accounts_info
-    
-    def pin_verification_api(self, account_number, pin):
-        return pin == self.__accounts_info[account_number].pin
 
 class PinVerification(Verification):
     def verify(account_number, pin, bank: Bank):
@@ -118,15 +127,23 @@ class AccountOperations:
         account.balance += amount
         return True
 
+class Printer:
+    def print_receipt(self, account, amount):
+        return account + " " + amount
+
 class ATM:
     def __init__(self, cash) -> None:
         self.__cash_reserve = cash
-    def withdraw_money(self, card: Card, pin_number):
-        user_account, user_name  = CardReader.read_card(card)
+        self.verification = PinVerification()
+        self.account_operations = AccountOperations()
+        self.printer = Printer()
+    def withdraw_money(self, card: Card, pin_number, amount):
+        user_account, user_name, bank  = CardReader.read_card(card)
         Display.show(f"Welcome {user_name} account {user_account}")
-        
-
-
+        self.verification.verify(user_account, pin_number, bank)
+        self.account_operations.withdraw_money(user_account, amount)
+        Display.show("Transaction Completed")
+        self.printer.print_receipt(user_account, amount)
         # card swipe
         # pin verification
         # select account type
