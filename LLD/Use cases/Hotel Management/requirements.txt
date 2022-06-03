@@ -1,0 +1,46 @@
+The system should support the booking of different room types like standard, deluxe, family suite, etc.
+Guests should be able to search the room inventory and book any available room.
+The system should be able to retrieve information, such as who booked a particular room, or what rooms were booked by a specific customer.
+The system should allow customers to cancel their booking - and provide them with a full refund if the cancelation occurs before 24 hours of the check-in date.
+The system should be able to send notifications whenever the booking is nearing the check-in or check-out date.
+The system should maintain a room housekeeping log to keep track of all housekeeping tasks.
+Any customer should be able to add room services and food items.
+Customers can ask for different amenities.
+The customers should be able to pay their bills through credit card, check or cash.
+
+
+User
+Receptionists
+Admins
+Housekeepers.
+
+Room(ABC) -- room_number, is_clean, price(), aminities()
+    - deluxe
+    - standard
+    - family suite
+
+Person(ABC): name, phone number, email, credentials..
+    - Customer == search room, book room, check in, check out
+    - Admin == add rooms, view report, get_room_booking, get_customer_room
+    - Receptionist == check in customer, check out customer, view report, get_room_booking, get_customer_room
+    - Housekeeper == clean
+
+Hotel(Singleton): hotel name, address, location, deluxe_rooms, standard_rooms, family_suite_rooms
+    - search_room
+    - book_room
+    - check_in
+    - check_out
+    - get_room_info
+    - get_customers_room
+    - order_food
+    - order_room_service
+
+Payment(ABC):
+    - credit_card
+    - cash
+
+
+
+
+
+

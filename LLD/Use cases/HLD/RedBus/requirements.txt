@@ -1,0 +1,38 @@
+1. User can register and login
+2. User can search: source, destination, date
+3. User can select bus
+4. User can select seats
+5. User can book pay and seats 
+6. User has 5 mins to complete the payment
+7. User should get notification about the ticket
+8. User should be able to see their past tickets.
+
+1. Operator can add information about a bus
+2. Operator can add new trips for a bus
+3. Operator can book ticket for customers
+
+Services:
+    1. UserService - user_register, user_login
+    2. BusService - search, select_bus(GET, returns seat_allocation and price for the bus)
+    3. BookingAndPaymentService - booking_api(POST, bus_id, seat_id, user_id, returns redict URL for payment service), payment_completion_api(payment_user_id, user_id)
+    4. AdminService: add_bus, add_trip
+    5. NotificationService - send_notification
+
+
+Databases:
+    User:
+        user_id, name, password, email, phone
+    Bus:
+        bus_id, bus_number, type...
+    Seats:
+        seat_id, bus_id, seat_type, seat_number, seat_location...
+    Trip:
+        trip_id, bus_id, source_id, destination_id
+    TripStops:
+        trip_stop_id, trip_id, stop_id, arrival_time, departure_time, distance_from_start
+    Price:
+        trip_id, seat_type, start_km, end_km, price
+    Booking:
+        booking_id, trip_id, seat_id, user_id, price, status: (booked, refund)
+
+

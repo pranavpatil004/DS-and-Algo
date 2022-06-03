@@ -1,0 +1,34 @@
+User:
+    1. User registration.
+    2. Search flights by date, source, destination and select a flight.
+    3. User can select different types of seats on the airline ==> economy, business, first class. 
+       User can book more than 1 seat.
+    4. User can pay online.
+    5. User can cancel the ticket.
+    6. User should get notified about their ticket.
+    7. User has 10 mins to complete the payment.
+
+Admin:
+    1. Admin can add flight details.
+    2. Admin can check seats in a given plane.
+
+Flight details:
+    1. Flight details should be seen on a board.
+
+
+classes:
+User(ABC) - user_id, name, email, phone, etc.
+    = Customer - book_ticket
+    = Admin - add_flight, update_flight_details, add_schedule
+Airplane - type, capacity, engine, range, seats
+AirplaneSchedule(Airplane, source, destination, source_departure_time, destination_arrival_time)
+Ticket - user_id, ticket_id, seat_ids, amount
+PaymentService(ABC) - complete_payment(amount)
+    -- PaypalService(PaymentService) = complete_payment(amount)
+    -- CreditCardService(PaymentService) = complete_payment(amount)
+Seat - seat_id, is_booked
+    -- Economy(Seat) = seat_id, is_booked, price
+    -- Business(SAA)
+    -- FirstClass(SAA)
+SeatBookingStrategy 
+    -- book_seats

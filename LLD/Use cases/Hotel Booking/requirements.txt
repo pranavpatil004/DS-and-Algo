@@ -1,0 +1,29 @@
+Customer:
+    0. Customers can register and login to the system. Or they can book the rooms as a guest.
+    1. Customer will select a city and date range of travel, type of room, number of people.
+    2. Customer should see list of available hotels in the given search criteria.
+    3. Customer should be able to select a hotel.
+    4. Customer should be able to select different types of rooms.
+    5. Customer should be able to pay and book the rooms.
+    6. Customer should get 10 mins to complete the payment.
+    7. Customer should be able to cancel their bookings 48 hours before the checking time.
+    8. Customers should be notified via email, phone etc. 
+
+Hotel Admins:
+    1. Add/Update rooms in their hotel.
+    2. Can make the room unavailable for a date.
+    3. Change details about the hotel.
+    4. Change pricing of the rooms.
+    5. Get reports for the past few dates.
+
+BMS Admins:
+    1. Add/Update hotel.
+    2. Get reports.
+    3. Should be able to see room availability for all the hotels.
+    4. Should be able to see customer accounts and orders.
+
+
+
+
+
+
