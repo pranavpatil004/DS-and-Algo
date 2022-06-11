@@ -16,7 +16,7 @@ Advertisements:
 
 
 1 - 2 - 3 - 4 - 5 - 6
-
+0   10  20  30  40  50
 trip_id, bus_id, stop_id, arrival_time, departure_time
 1          1       1        1
 1          1       2        2
