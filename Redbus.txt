@@ -1,0 +1,38 @@
+Redbus:
+
+User:
+    user_id, name, phone, email
+
+Bus:(8 bytes + 20 bytes + 10 bytes) => 38 bytes * 2 million = 38 * 2 * 10^6 = 80 * 10^6 = 80 MB
+    bus_id, bus_name, bus_number
+
+Seat:
+    seat_id, bus_id, category, seat_location
+
+Trip: 
+    trip_id, bus_id
+
+Trip_Seats:
+    trip_id, seat_id, price, is_booked
+
+Route: 
+    trip_id, stop_id, arrival_timestamp, departure_timestamp
+
+Stop:
+    stop_id, stop_name
+
+Booking:
+    booking_id, user_id, source_id, destination_id, price, seat_id, is_payent_done
+
+
+Capacity planning:
+    total citizens in india: 1.5 billion
+    4% use bus for travel
+    70 million users per day
+    one bus can take 35 people on average
+    70,000,000/35 = 2,000,000
+    * More than 1.6 million buses are registered in India, 
+    and the public bus sector operates 170,000 buses carrying roughly 70 million people per day.
+
+
+

@@ -1,0 +1,32 @@
+
+User:
+    user_id, username, name, phone, email
+
+8 bytes + 15 bytes + 50 bytes + 8 bytes + 30 bytes = 111 bytes
+10^11
+10^2
+
+100 GB
+
+User_tweets:
+    user_id, tweet_id
+
+16 bytes * 3 * 365 * 2 * 10^6 ~ 365 * 10^8 ~ 4 * 10^10 : 40 GB
+
+total : 140 GB
+Total Servers = 7
+One Server will contain 20 GB
+
+
+twits_db: NoSQL
+tweet_table
+    tweet_id, user_id, tweet_content, tweet_time, url
+comments_table:
+    comment_id, post_id/tweet_id, user_id, comment, timestamp
+
+likes_table:
+    likes_id, parent_id, user_id
+
+
+
+Comments and 
