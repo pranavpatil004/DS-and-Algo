@@ -42,3 +42,16 @@ Database Schema:
         Delivery location:
             user_id, location long/lat
     
+    Delivery Exec DB:
+        Delivery_Exec:
+            exec_id, name, age, phone, email
+        
+        Delivery_Exec_Status:
+            exec_id, exec_status
+        
+        Delivery_Exec_Order_History:
+            exec_id, order_id, delivered_timestamp, distance_travelled etc...
+        
+        Delivery_Exec_Rating(This can be added in a separate DB):
+            exec_id, order_id, ratings...
+    
