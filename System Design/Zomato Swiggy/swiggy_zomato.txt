@@ -1,0 +1,44 @@
+Requirements:
+    1. Users should be able to see restaurants in their area.
+    2. Users should be able to see the details of a restaurant.
+    3. Users should be able to add, remove, view a restaurant to their list of favorites.
+    4. Users should be able to add items to their cart.
+    5. Users should be able to checkout.
+    6. Users should be able to track their delivery.
+    7. Users should be able to see their order history.
+    8. Users should be able to add review for their restaurant.
+    9. Restaurants can register themselves and add their menu.
+
+
+Database Schema:
+    Users DB:
+        Users:
+            user_id, name, phone, email, type
+        Addresses:
+            address_id, street, city, state, zip, latitude, longitude
+        User_Addresses:
+            user_id, address_id
+
+    Restaurants DB:
+        Restaurants:
+            restaurant_id, restaurant_name, restaurant_location
+        
+        Food_Item:
+            item_id, restaurant_id, item_name, item_quantity, item_price
+
+    Orders DB:
+        Orders:
+            order_id, user_id, total_amount, order_created_dt
+        Order_Items:
+            order_id, item_id, item_quantity
+        Order_Status_History:
+            order_id, status (can be foreign key from status domain table)
+    
+    Reviews DB:
+        Reviews:
+            review_id, restaurant_id, review_stars, review_comment, review_media_urls
+    
+    Delivery TSDB:
+        Delivery location:
+            user_id, location long/lat
+    

@@ -1,0 +1,11 @@
+Requirements:
+    1. Users should be able to search a product.
+    2. Users should be able to add products to cart.
+    3. Users should be able to place order.
+    4. Users should be able to track order.
+    5. Users should be able to view order history.
+    6. Users should be able to cancel order.
+    7. Users should be able to view cart.
+    8. Users should be able to add a review.
+    9. Users should be able to view existing reviews.
+    10. Admins can add catelog for different items.

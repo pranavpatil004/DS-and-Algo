@@ -21,6 +21,7 @@ One Server will contain 20 GB
 twits_db: NoSQL
 tweet_table
     tweet_id, user_id, tweet_content, tweet_time, url
+    
 comments_table:
     comment_id, post_id/tweet_id, user_id, comment, timestamp
 

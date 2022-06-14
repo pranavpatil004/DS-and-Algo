@@ -60,7 +60,7 @@ Options: Cassandra, Hbase
 7. Uber / Ola
 8. Airbnb / Oyo
 9. Zoom
-10. Amazon / Flipkart
+10. Amazon / Flipkart (D)
 11. Bookmyshow
 12. Google Drive / Dropbox
 13. Zerodha / Upstox
@@ -71,3 +71,4 @@ Options: Cassandra, Hbase
 18. Google Docs
 19. Rate limiter
 20. TinyURL / Pastebin 
+21. Payment Gateway
