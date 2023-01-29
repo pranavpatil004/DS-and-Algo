@@ -64,7 +64,7 @@ Options: Cassandra, Hbase
 11. Bookmyshow
 12. Google Drive / Dropbox
 13. Zerodha / Upstox
-14. Swiggy / Zomato
+14. Swiggy / Zomato (D)
 15. Make My Trip
 16. Gmail
 17. Google Map

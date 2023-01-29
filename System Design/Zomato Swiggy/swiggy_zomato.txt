@@ -54,4 +54,8 @@ Database Schema:
         
         Delivery_Exec_Rating(This can be added in a separate DB):
             exec_id, order_id, ratings...
-    
+
+
+Capcaity Planning:
+    Monthly Active Users: 41 Million
+    Total Restaurants: 1.4 million
